@@ -94,7 +94,7 @@ const blogadd = async (req,res)=>{
                 })
                 if (data) {
                     console.log("Data Successfully edit");
-                    return res.redirect('/viewblog');
+                    return res.redirect('back');
                 }
                 else {
                     console.log(err);
@@ -115,7 +115,8 @@ const blogadd = async (req,res)=>{
                 })
                 if (data) {
                     console.log("Data Successfully edit");
-                    return res.redirect('/viewblog');
+                    req.flash('success','Record Successfully updated');
+                    return res.redirect('back');
                 }
                 else {
                     console.log(err);
@@ -139,7 +140,8 @@ const blogadd = async (req,res)=>{
             })
             if (data) {
                 console.log("Data Successfully Add");
-                return res.redirect('/viewblog');
+                req.flash('success','Record Successfully Add');
+                return res.redirect('back');
             }
             else {
                 console.log(err);
@@ -188,7 +190,8 @@ const deletedata = async (req,res)=>{
             console.log("data not deleted");
         }
         if(deletedata){
-            console.log("data delet sucsefully");
+            console.log("data delete sucsefully");
+            req.flash('danger','Data delete sucsefully');
             return res.redirect('back');
         }
         else{
@@ -235,6 +238,7 @@ const profiledata = async (req,res)=>{
     });
     if(profile){
         console.log("profile updata");
+        req.flash('success','profile Updated succesfully');
         return res.redirect('back');
     }
     else{

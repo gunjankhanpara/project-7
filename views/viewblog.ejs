@@ -1,6 +1,11 @@
 <%- include('header')%>
   <div class="col-md-6 col-12 mt-3 ms-3">
     <div class="card">
+      <% if(massege.danger.length > 0){%>
+        <div class="alert alert-danger" role="alert">
+          <%= massege.danger %>
+        </div>
+      <% } %>
       <h5 class="card-header">View Blog</h5>
       <div class="card-body">
         <p>Display Blog from social accounts on your site</p>
