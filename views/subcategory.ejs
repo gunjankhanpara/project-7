@@ -1,0 +1,78 @@
+<%- include('header')%>
+
+ <!-- Content wrapper -->
+ <div class="content-wrapper">
+    <!-- Content -->
+    
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">subcatogory</span> Vertical Layouts</h4>
+
+      <!-- Basic Layout -->
+      <div class="row">
+        <div class="col-xl">
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">ADD subcategory</h5>
+              <small class="text-muted float-end">Default label</small>
+            </div>
+            <div class="card-body">
+              <form action="/postscategory" method="post">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-fullname">Category</label>
+                  <select name="category" id="">
+                    <option value="">--select category--</option>
+                    <% category.map((val)=>{ %>
+                        <option value="<%= val.id %>"><%= val.category%></option>
+                   <%  })%>
+                </select>
+                </div>
+                <label class="form-label" for="basic-default-fullname">SubCategory</label>
+                <input type="text" name="subcategory">
+                <br>
+                <input type="submit" value="submit" class="btn btn-primary">
+                </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- / Content -->
+    <div class="content-backdrop fade"></div>
+ </div>
+  <!-- Content wrapper -->
+
+  <div class="col-md-6 col-12 mt-3 ms-3">
+    <div class="card">
+      <h5 class="card-header">View subcategory</h5>
+         <table border="1">
+                    <tr>
+                        <th>Category</th>
+                        <th>SubCategory</th>
+                        <th>Action</th>
+                    </tr>
+                    <tbody>
+                        <% addsubcatTbl.map((val)=>{ %>
+                            <tr>
+                                <td><%= val.categoryid.category %></td>
+                                <td><%= val.subcategory %></td>
+                                <td>
+                                  <a href="" class="btn btn-icon btn-outline-secondary">
+                                    <i class="bx bx-trash-alt"></i>
+                                  </a>
+
+                                </td>
+                                <td>
+                                  <a href="/subEdit?id=<%= val.id %>" class="btn btn-icon btn-outline-danger">
+                                    <i class="bx bx-link-alt"></i>
+                                  </a>
+
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+          </table>
+    </div>
+  </div>
+
+<%- include('footer')%>

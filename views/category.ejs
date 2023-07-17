@@ -1,0 +1,80 @@
+<%- include('header')%>
+
+ <!-- Content wrapper -->
+ <div class="content-wrapper">
+    <!-- Content -->
+    
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">BLOG</span> Vertical Layouts</h4>
+
+      <!-- Basic Layout -->
+      <div class="row">
+        <div class="col-xl">
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">ADD Blog</h5>
+              <small class="text-muted float-end">Default label</small>
+            </div>
+            <div class="card-body">
+              <form action="/addcategort" method="post">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-fullname">Category</label>
+                  <input type="hidden" value="<%=single.id%>" name="editid">
+                  <input type="text" class="form-control" id="productname" name="name"  placeholder="enter Category"  value="<%=single.category %>"/>
+                </div>
+                <% if(single){ %>
+                  <input type="submit" value="edit" class="btn btn-primary">
+                <% } else{ %>
+                  <input type="submit" class="btn btn-primary" value="submit"></input>
+               <% } %>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- / Content -->
+    <div class="content-backdrop fade"></div>
+ </div>
+  <!-- Content wrapper -->
+
+  <div class="col-md-6 col-12 mt-3 ms-3">
+    <div class="card">
+      <% if(massege.danger.length > 0){%>
+        <div class="alert alert-danger" role="alert">
+          <%= massege.danger %>
+        </div>
+      <% } %>
+      
+      <h5 class="card-header">View category</h5>
+      <div class="card-body">
+        <!-- Social Accounts -->
+        <% user.map((val)=>{ %>
+          <% const{id,category}=val%>
+
+            <div class="d-flex mb-3">
+            <div class="flex-grow-1 row">
+              <div class="col-8 col-sm-7 mb-sm-0 mb-2">
+                <h6 class="mb-0">
+                  <%= category %>
+                </h6>
+              </div>
+              <div class="col-4 col-sm-5 text-end">
+                <a href="/delete?id=<%=id%>" class="btn btn-icon btn-outline-secondary">
+                  <i class="bx bx-trash-alt"></i>
+                </a>
+                <a href="/edit?id=<%=id%>" class="btn btn-icon btn-outline-danger">
+                  <i class="bx bx-link-alt"></i>
+                </a>
+                
+              </div>
+            </div>
+          </div>
+            <% }) %>
+              <!-- /Social Accounts -->
+      </div>
+    </div>
+  </div>
+
+<%- include('footer')%>

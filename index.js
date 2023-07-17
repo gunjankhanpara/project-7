@@ -15,6 +15,8 @@ const passport = require('passport');
 const session = require('express-session');
 const passportlocal = require('./config/passportlocal');
 const flash = require('connect-flash');
+const cookie = require('cookie-parser');
+
 
 app.use(session({
     secret:'gunjan',
@@ -25,10 +27,12 @@ app.use(session({
     }
 }))
 
-app.use(passport.initialize());
+app.use(passport.initialize());``
 app.use(passport.session());
 app.use(passport.setAuthentication);
 app.use(flash());
+app.use(cookie());
+
 
 app.use(function(req,res,next){
     res.locals.massege = {
